@@ -23,11 +23,11 @@ function getParameterByName(name, url) {
 }
 
 window.onload = function () {
-  $( ".body" ).animate({
-    opacity: 1
-  }, 5000, function() {
-    // Animation complete.
-  });
+  $( ".body" ).fadeIn();
+
+  $('.homebutton').html("← Back");
+  $('a').prop('draggable', false);
+  $('img').prop('draggable', false);
 
   // $('h1').click(function(e) {
   //   new Audio("sounds/click.wav").play();
@@ -114,6 +114,13 @@ function graphicscard() {
     window.location = "more/graphicscard.html";
   });
 }
+function modem() {
+  $( ".openview-modem" ).animate({
+    opacity: 0
+  }, 1000, function() {
+    window.location = "more/modem.html";
+  });
+}
 
 
 
@@ -124,19 +131,10 @@ function graphicscard() {
 function moreinfo() {
   if ($(".more-info-img").attr('src') == "../images/info.png") {
     $('.more-info-img').attr('src','../images/cross.png');
-    $(".more-info-info").css({
-      "display": "block"
-    });
-    $( ".more-info-info" ).animate({
-      opacity: 1
-    }, 1000);
+    $(".more-info-info").fadeToggle();
   }else {
     $('.more-info-img').attr('src','../images/info.png');
-    $( ".more-info-info" ).animate({
-      opacity: 0
-    }, 1000, function() {
-      $(".more-info-info").hide();
-    });
+    $( ".more-info-info" ).fadeToggle();
 
   }
 }
@@ -167,3 +165,10 @@ function moreinfo() {
       //   "images/powersupply.png",
       //   "images/ram.png"
 			// )
+
+
+
+
+
+
+document.addEventListener('contextmenu', event => event.preventDefault());
